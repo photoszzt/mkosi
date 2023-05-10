@@ -150,7 +150,7 @@ class Manifest:
             name, source, version, arch, size, installtime = package.split("\t")
 
             # dpkg records the size in KBs
-            size = int(size) * 1024
+            size = int(size) * 1024 if size else 0
             installtime = datetime.fromtimestamp(int(installtime))
 
             # If we are creating a layer based on a BaseImage=, e.g. a sysext, filter by
